@@ -1,0 +1,31 @@
+<html>
+<head>
+  <title></title>
+</head>
+ 
+<body>
+<form name="form1" action="chernovik.php" enctype="multipart/form-data" method="post">
+<input type="file" name="path" title="Выберите первый файл"/></br>
+</br>
+<input type="file" name="path1" title="Выберите второй файл"/> </br>
+</br>
+<input type="submit" name="button" /> </br>
+</body>
+ 
+</html>
+ 
+<?php
+  $file = "upload/".$_FILES['path']['name'];
+  $file1 = "upload/".$_FILES['path1']['name'];
+  move_uploaded_file($_FILES['path']['tmp_name'], $file);
+  move_uploaded_file($_FILES['path1']['tmp_name'], $file1);
+  if(isset($_FILES['path']['name'])==true & isset($_FILES['path1']['name'])==true)
+  {
+echo "Загруженный первый файл: ".$_FILES['path']['name']."</br>";
+echo "Размер: ".$_FILES['path']['size']."байт"."</br>";
+ 
+echo "Загруженный второй файл: ".$_FILES['path1']['name']."</br>";
+echo "Размер: ".$_FILES['path1']['size']."байт"."</br>";
+ 
+}
+?>
